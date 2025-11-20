@@ -1,0 +1,5 @@
+routeros-ssh-connector>=1.7.1
+paramiko>=2.11.0
+PyYAML>=6.0
+requests>=2.28.0
+schedule>=1.1.0
