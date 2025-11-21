@@ -64,7 +64,7 @@ class MikroTikUpdater:
             self.connector.execute_command(device_name, '/system package update check-for-updates once')
             
             self.logger.info("⏳ Ожидание завершения проверки обновлений...")
-            time.sleep(20)
+            time.sleep(5)
             
             output, error = self.connector.execute_command(device_name, '/system package update print')
             
