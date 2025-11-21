@@ -451,7 +451,7 @@ class MikroTikManager:
         
         elif choice == '4':
             print("\n💾 Создание бэкапов на всех устройствах...")
-            self.scheduler.task_create_backups(show_progress=True)
+            self.scheduler.task_create_backups(show_progress=True, force=True)
         
         elif choice == '5':
             return
