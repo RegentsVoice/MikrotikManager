@@ -1,4 +1,3 @@
-# config.py
 import os
 import sys
 import secrets
@@ -120,4 +119,5 @@ DATABASE_URL={database_url}
 
 # Инициализируем конфигурацию
 config = init_config()
+
 
