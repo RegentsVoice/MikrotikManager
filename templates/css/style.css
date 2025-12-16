@@ -1,0 +1,575 @@
+/* ===== ОСНОВНЫЕ ПЕРЕМЕННЫЕ ===== */
+:root {
+    /* Светлая тема по умолчанию */
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f8f9fa;
+    --border-color: #dee2e6;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --text-muted: #6c757d;
+    --hover-color: #e9ecef;
+    --footer-bg: #f8f9fa;
+    --footer-border: #dee2e6;
+    --primary-color: #0d6efd;
+    --alert-bg: #ffffff;
+    --dropdown-bg: #ffffff;
+    --dropdown-border: #dee2e6;
+    --input-bg: #ffffff;
+    --input-border: #ced4da;
+    --input-text: #212529;
+    --page-bg: #ffffff;
+    --page-text: #212529;
+}
+
+[data-theme="dark"] {
+    /* Темная тема */
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-tertiary: #343a40;
+    --border-color: #404040;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-muted: #888888;
+    --hover-color: #495057;
+    --footer-bg: #2d2d2d;
+    --footer-border: #404040;
+    --primary-color: #80bdff;
+    --alert-bg: #343a40;
+    --dropdown-bg: #343a40;
+    --dropdown-border: #404040;
+    --input-bg: #343a40;
+    --input-border: #495057;
+    --input-text: #ffffff;
+    --page-bg: #2d2d2d;
+    --page-text: #ffffff;
+}
+
+/* ФУТЕР */
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-sizing: inherit;
+}
+
+/* Основной контейнер для контента */
+.container-fluid.mt-3 {
+    flex: 1 0 auto;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+/* Скрываем контент до загрузки темы */
+html:not(.theme-loaded) body {
+    opacity: 0;
+    visibility: hidden;
+    transition: none !important;
+}
+
+html.theme-loaded body {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+/* ===== НАВИГАЦИЯ ===== */
+.navbar-dark.bg-dark {
+    background-color: #343a40 !important;
+    flex-shrink: 0;
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: white !important;
+}
+
+.nav-link:hover {
+    color: white !important;
+}
+
+/* Выпадающие меню в навигации */
+.navbar-nav .dropdown-menu {
+    background-color: #495057;
+    border-color: #6c757d;
+}
+
+.navbar-nav .dropdown-item {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.navbar-nav .dropdown-item:hover {
+    background-color: #6c757d;
+    color: white;
+}
+
+.navbar-nav .dropdown-divider {
+    border-color: #6c757d;
+}
+
+.navbar-nav .dropdown-toggle::after {
+    border-top-color: rgba(255, 255, 255, 0.85);
+}
+
+/* ===== КАРТОЧКИ ===== */
+.card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-header {
+    background-color: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+    padding: 12px 20px;
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.card-body {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== ФУТЕР ===== */
+.footer {
+    background-color: var(--footer-bg) !important;
+    border-top: 1px solid var(--footer-border) !important;
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+.footer-text {
+    color: var(--text-primary);
+    opacity: 0.8;
+    margin: 0;
+}
+
+.footer-text-small {
+    color: var(--text-primary);
+    opacity: 0.7;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.footer-link {
+    color: var(--text-primary);
+    opacity: 0.8;
+    text-decoration: none;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.footer-link:hover {
+    opacity: 1;
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* Контейнер внутри футера */
+.footer .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* ===== ТАБЛИЦЫ ===== */
+.table {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.table th {
+    background-color: var(--bg-tertiary);
+    border-bottom: 2px solid var(--border-color);
+    font-weight: 600;
+    padding: 12px;
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.table td {
+    padding: 12px;
+    vertical-align: middle;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-primary);
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--hover-color);
+}
+
+/* ===== КНОПКИ ===== */
+.btn {
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-sm {
+    padding: 4px 12px;
+}
+
+.btn-outline-light {
+    border-color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: white;
+    color: white;
+}
+
+/* ===== ФОРМЫ ===== */
+.form-control, .form-select {
+    border-radius: 4px;
+    border: 1px solid var(--input-border);
+    padding: 8px 12px;
+    background-color: var(--input-bg);
+    color: var(--input-text);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    background-color: var(--input-bg);
+    color: var(--input-text);
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+/* ===== БЕЙДЖИ СТАТУСОВ ===== */
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+/* ===== ВЫПАДАЮЩИЕ МЕНЮ (ОБЩИЕ) ===== */
+.dropdown-menu {
+    background-color: var(--dropdown-bg);
+    border: 1px solid var(--dropdown-border);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item {
+    color: var(--text-primary);
+    background-color: transparent;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+    background-color: var(--hover-color);
+    color: var(--text-primary);
+}
+
+.dropdown-divider {
+    border-color: var(--border-color);
+}
+
+.dropdown-item-text {
+    color: var(--text-muted);
+}
+
+/* Стрелочки выпадающих меню */
+.dropdown-toggle::after {
+    border-top-color: var(--text-primary);
+    opacity: 0.7;
+}
+
+/* ===== ФЛЕШ СООБЩЕНИЯ ===== */
+.flash-messages {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    z-index: 1000;
+    max-width: 400px;
+}
+
+.alert {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+    background-color: var(--alert-bg);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== УТИЛИТЫ ===== */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* ===== ПАГИНАЦИЯ ===== */
+.pagination {
+    margin-bottom: 0;
+}
+
+.page-link {
+    border-radius: 4px;
+    margin: 0 2px;
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.page-item.active .page-link {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.page-link:hover {
+    background-color: var(--hover-color);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+/* ===== СПИСКИ ===== */
+.list-group-item {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.list-group-item-action:hover {
+    background-color: var(--hover-color);
+    color: var(--text-primary);
+}
+
+/* ===== КАСТОМНЫЕ СТИЛИ ДЛЯ СТАТУСОВ УСТРОЙСТВ ===== */
+.status-online {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.status-offline {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+.status-update {
+    color: #ffc107;
+    font-weight: 600;
+}
+
+/* ===== ИКОНКИ ===== */
+.table .bi, .table .fas, .table .fab {
+    margin-right: 5px;
+    font-size: 1.1em;
+    color: var(--text-primary);
+}
+
+.bi, .fas, .fab, .fa-solid, .fa-brands {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "FontAwesome", 
+                 "Bootstrap Icons" !important;
+    font-weight: 900;
+}
+
+/* Улучшенная видимость иконок в темной теме */
+[data-theme="dark"] .fas,
+[data-theme="dark"] .fab,
+[data-theme="dark"] .fa-solid,
+[data-theme="dark"] .fa-brands,
+[data-theme="dark"] .bi {
+    opacity: 0.9;
+}
+
+/* ===== КОНТЕЙНЕРЫ ===== */
+.container-main {
+    min-height: calc(100vh - 140px);
+    padding-bottom: 40px;
+}
+
+.container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* ===== МОДАЛЬНЫЕ ОКНА ===== */
+.modal-content {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.modal-header {
+    border-bottom-color: var(--border-color);
+}
+
+.modal-footer {
+    border-top-color: var(--border-color);
+}
+
+/* ===== ПРОГРЕСС БАРЫ ===== */
+.progress {
+    background-color: var(--bg-tertiary);
+}
+
+.progress-bar {
+    background-color: var(--primary-color);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .table-responsive {
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+    }
+    
+    .flash-messages {
+        left: 10px;
+        right: 10px;
+        max-width: none;
+    }
+    
+    .card-header {
+        padding: 10px 15px;
+    }
+    
+    .btn {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .footer {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1rem;
+    }
+    
+    .nav-link {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .card {
+        border-radius: 6px;
+    }
+    
+    .footer {
+        text-align: center;
+    }
+    
+    .footer .row > div {
+        margin-bottom: 15px;
+    }
+}
+
+/* ===== ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ ===== */
+#theme-toggle {
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    border-color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+#theme-toggle:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: white;
+    color: white;
+}
+
+/* ===== АНИМАЦИИ ПЕРЕКЛЮЧЕНИЯ ТЕМЫ ===== */
+[data-theme] body,
+[data-theme] .card,
+[data-theme] .card-header,
+[data-theme] .table,
+[data-theme] .footer,
+[data-theme] .alert,
+[data-theme] .dropdown-menu,
+[data-theme] .form-control,
+[data-theme] .form-select,
+[data-theme] .page-link,
+[data-theme] .list-group-item {
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Гарантируем, что контент занимает доступное пространство */
+main {
+    flex: 1 0 auto;
+    width: 100%;
+}
+
+/* Улучшение для контейнера с контентом */
+.py-3, .py-4, .py-5 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+/* Убедимся, что футер не перекрывает контент на маленьких экранах */
+@media (max-height: 600px) {
+    .footer {
+        position: relative;
+        margin-top: 20px;
+    }
+}
+
+/* Альтернативное решение для старых браузеров */
+body:before {
+    content: '';
+    display: table;
+}
+
+.min-height-content {
+    min-height: calc(100vh - 200px);
+}
