@@ -74,7 +74,13 @@ cd ./mikrotik-manager
 ```bash
 pyython -m venv venv
 ```
-### 3. Активируйте виртуальное окружение (Выберете для вашего shell)
+
+### 3. Установите зависимости
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Активируйте виртуальное окружение (Выберете для вашего shell)
 Fish
 ```bash
 source ./venv/bin/activate.fish
@@ -88,7 +94,7 @@ Powershell
 ```bash
 . ./venv/bin/activate.ps1
 ```
-### 3. Запустите приложение и следуйте подсказкав в консоли
+### 5. Запустите приложение и следуйте подсказкав в консоли
 ```bash
 python ./app.py
 ```
